@@ -2,8 +2,8 @@
   "browser":[
     {
       "family":"safari",
-      "regex":"version/([0-9\\.]+) (safari)/",
-      "description":"",
+      "regex":"version/([0-9\\.]+).* (safari)/",
+      "description":""
     },{
       "family":"firefox",
       "regex":"rv:([0-9\\.]+)\\) (gecko/[0-9]+) (firefox)/([0-9\\.]+)"
@@ -26,15 +26,23 @@
       "description": "ie 11"
     },{
       "family":"chrome",
-      "regex":"(chromium|chrome)/([0-9\\.]+) (safari/[0-9\\.]+)"
+      "regex":"(chromium|chrome)/([0-9\\.]+).* (safari/[0-9\\.]+)"
     }
   ],
   "os":[],
   "device":[
     {
       "family":"phone",
-      "regex":"\\((ip[honed|\\s\\w*]+);.+(apple)",
-      "description":"ipod/iphone"
+      "regex":"\\((iphone);.+(apple)",
+      "description":"iphone"
+    }, {
+      "family":"phone",
+      "regex":"(android) .* (mobile)",
+      "description":"android mobile"
+    }, {
+      "family":"pad",
+      "regex":"\\((ipad);.+(apple)",
+      "description":"ipad"
     }
   ]
 }

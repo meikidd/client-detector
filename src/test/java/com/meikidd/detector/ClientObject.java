@@ -9,6 +9,15 @@ public class ClientObject {
     private Browser browser;
     private OS os;
     private Device device;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Device getDevice() {
         return device;
