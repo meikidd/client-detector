@@ -2,8 +2,12 @@
   "browser":[
     {
       "family":"ae_app",
+      "regex":"phone os.*(aliapp)\\(ae/([0-9\\.]+).*(ae_lang)",
+      "description":"Aliexpress IOS App"
+    },{
+      "family":"ae_app",
       "regex":"(aliapp)\\(aliexpressandroid/([0-9\\.]+).*(aliapp)",
-      "description":"aliexpress android app"
+      "description":"Aliexpress Android App"
     },{
       "family":"safari",
       "regex":"version/([0-9\\.]+).* (safari)/",
@@ -63,6 +67,10 @@
       "family":"phone",
       "regex":"(android) .* (mobile)",
       "description":"android mobile"
+    }, {
+      "family":"phone",
+      "regex":"(aliapp\\((aliexpressandroid|ae)/[0-9\\.]+)",
+      "description":"Aliexpress App"
     }
   ]
 }
