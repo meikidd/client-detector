@@ -1,4 +1,4 @@
-package com.alibaba.detector;
+package com.meikidd.detector;
 
 import com.alibaba.fastjson.JSON;
 
@@ -46,7 +46,6 @@ public class ClientDetector {
                 browser.setName(dr.getBrowser().get(i).getFamily());
                 for(int j=0; j < matcher.groupCount(); j++) {
                     if(isVersionString(matcher.group(j))) {
-//                        System.out.println(getMajorVersion(matcher.group(j)) + "---");
                         browser.setVersion(getMajorVersion(matcher.group(j)));
                     }
                 }
@@ -81,7 +80,6 @@ public class ClientDetector {
     }
 
     public static boolean isVersionString(String version) {
-//        System.out.println("isVersion:"+version);
         Pattern versionPattern = Pattern.compile("^[0-9\\.]+$");
         Matcher matcher = versionPattern.matcher(version);
         return matcher.find();
@@ -95,13 +93,4 @@ public class ClientDetector {
         }
     }
 
-    public static void main(String[] args) {
-        // pc chrome
-//         String uaStr = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36";
-//         System.out.println(ClientDetector.detectBrowser(uaStr));
-
-        // iphone chrome
-        String uaStr = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1";
-        System.out.println(ClientDetector.detectDevice(uaStr));
-    }
 }

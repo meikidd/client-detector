@@ -1,9 +1,8 @@
-package com.alibaba.detector;
+package com.meikidd.detector;
 
 import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DetectorRegexes {
     private ArrayList<DetectorObject> browser;

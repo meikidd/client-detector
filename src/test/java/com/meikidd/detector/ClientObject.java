@@ -1,9 +1,5 @@
 package com.meikidd.detector;
 
-import com.alibaba.detector.Browser;
-import com.alibaba.detector.Device;
-import com.alibaba.detector.OS;
-
 public class ClientObject {
     private String ua;
     private Browser browser;

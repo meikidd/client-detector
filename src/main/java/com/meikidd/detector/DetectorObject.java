@@ -1,4 +1,4 @@
-package com.alibaba.detector;
+package com.meikidd.detector;
 
 import java.util.regex.Pattern;
 

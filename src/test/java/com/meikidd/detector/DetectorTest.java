@@ -1,9 +1,5 @@
 package com.meikidd.detector;
 
-import com.alibaba.detector.Browser;
-import com.alibaba.detector.ClientDetector;
-import com.alibaba.detector.Device;
-import com.alibaba.detector.OS;
 import com.alibaba.fastjson.JSON;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -66,33 +62,36 @@ public class DetectorTest extends TestCase {
      * Rigourous Test :-)
      */
     public void testBrowser() {
+        System.out.println("[test browser]:");
         for (int i = 0; i < browserCases.getCases().size(); i++) {
             ClientObject client = browserCases.getCases().get(i);
             String ua = client.getUa();
             Browser browser = ClientDetector.detectBrowser(ua);
-
-            System.out.print(client.getBrowser().getName()+","+client.getBrowser().getVersion());
-            System.out.print("=");
-            System.out.print(browser.getName()+","+browser.getVersion());
+            System.out.print(client.getBrowser().getName() + "," + client.getBrowser().getVersion());
+            System.out.print(" = ");
+            System.out.print(browser.getName() + "," + browser.getVersion());
             System.out.println("");
             assertEquals(browser.getName(), client.getBrowser().getName());
             assertEquals(browser.getVersion(), client.getBrowser().getVersion());
         }
     }
     public void testOS() {
+        System.out.println("[test os]:");
         for (int i = 0; i < osCases.getCases().size(); i++) {
             ClientObject client = osCases.getCases().get(i);
             String ua = client.getUa();
             OS os = ClientDetector.detectOS(ua);
+            System.out.println(client.getOs().getName() + " = " + os.getName());
             assertEquals(os.getName(), client.getOs().getName());
         }
     }
     public void testDevice() {
+        System.out.println("[test device]:");
         for (int i = 0; i < deviceCases.getCases().size(); i++) {
             ClientObject client = deviceCases.getCases().get(i);
             String ua = client.getUa();
             Device device = ClientDetector.detectDevice(ua);
-            System.out.println(client.getDevice().getName() + "=" + device.getName());
+            System.out.println(client.getDevice().getName() + " = " + device.getName());
             assertEquals(device.getName(), client.getDevice().getName());
         }
     }

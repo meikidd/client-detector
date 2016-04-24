@@ -1,4 +1,4 @@
-package com.alibaba.detector;
+package com.meikidd.detector;
 
 public class OS {
     public static final String WIN = "win";

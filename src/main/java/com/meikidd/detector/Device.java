@@ -1,4 +1,4 @@
-package com.alibaba.detector;
+package com.meikidd.detector;
 
 public class Device {
     public static final String PC = "pc";

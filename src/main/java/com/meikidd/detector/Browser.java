@@ -1,4 +1,4 @@
-package com.alibaba.detector;
+package com.meikidd.detector;
 
 public class Browser {
     public static final String IE = "ie";
