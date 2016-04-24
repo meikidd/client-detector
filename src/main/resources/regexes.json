@@ -1,6 +1,10 @@
 {
   "browser":[
     {
+      "family":"ae_app",
+      "regex":"(aliapp)\\(aliexpressandroid/([0-9\\.]+).*(aliapp)",
+      "description":"aliexpress android app"
+    },{
       "family":"safari",
       "regex":"version/([0-9\\.]+).* (safari)/",
       "description":""
