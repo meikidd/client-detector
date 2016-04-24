@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.io.IOUtils;
@@ -38,39 +37,62 @@ public class ClientDetector {
         }
     }
 
-    public static HashMap<String, String> detectBrowser(String ua) {
+    public static Browser detectBrowser(String ua) {
         ua = ua.toLowerCase();
-        HashMap<String, String> map = new HashMap<String, String>();
+        Browser browser = new Browser();
         for (int i=0; i < dr.getBrowser().size(); i++) {
             Matcher matcher = dr.getBrowser().get(i).getPattern().matcher(ua);
-            if(matcher.find() && matcher.groupCount() >= 3) {
-                map.put("browser", dr.getBrowser().get(i).getFamily());
-                map.put("version", matcher.group(2));
+            if(matcher.find() && matcher.groupCount() >= 2) {
+                browser.setName(dr.getBrowser().get(i).getFamily());
+                for(int j=0; j < matcher.groupCount(); j++) {
+                    if(isVersionString(matcher.group(j))) {
+//                        System.out.println(getMajorVersion(matcher.group(j)) + "---");
+                        browser.setVersion(getMajorVersion(matcher.group(j)));
+                    }
+                }
                 break;
             }
         }
-        return map;
+        if(browser.getName() == null) {
+            browser.setName(Browser.OTHER);
+        }
+        return browser;
     }
-    public static HashMap<String, String> detectOS(String ua) {
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("os", "mac");
-        return map;
+    public static OS detectOS(String ua) {
+        OS os = new OS();
+        os.setName(OS.MAC);
+        return os;
     }
-    public static HashMap<String, String> detectDevice(String ua) {
+    public static Device detectDevice(String ua) {
         ua = ua.toLowerCase();
-        HashMap<String, String> map = new HashMap<String, String>();
+        Device device = new Device();
         for (int i=0; i < dr.getDevice().size(); i++) {
             DetectorObject detect = dr.getDevice().get(i);
             Matcher matcher = detect.getPattern().matcher(ua);
             if(matcher.find()) {
-                map.put("device", detect.getFamily());
+                device.setName(detect.getFamily());
                 break;
             }
         }
-        if(map.size() == 0) {
-            map.put("device", "pc");
+        if(device.getName() == null) {
+            device.setName(Device.PC);
         }
-        return map;
+        return device;
+    }
+
+    public static boolean isVersionString(String version) {
+//        System.out.println("isVersion:"+version);
+        Pattern versionPattern = Pattern.compile("^[0-9\\.]+$");
+        Matcher matcher = versionPattern.matcher(version);
+        return matcher.find();
+    }
+
+    public static String getMajorVersion(String version) {
+        if(version.contains(".")) {
+            return version.substring(0, version.indexOf("."));
+        } else {
+            return version;
+        }
     }
 
     public static void main(String[] args) {

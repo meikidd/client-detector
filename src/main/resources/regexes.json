@@ -1,12 +1,32 @@
 {
   "browser":[
     {
-      "family":"chrome",
-      "regex":"(chromium|chrome)/([0-9]+)\\.([0-9]+)\\.([0-9]+)",
-      "description":"chrome desc"
+      "family":"safari",
+      "regex":"version/([0-9\\.]+) (safari)/",
+      "description":"",
     },{
       "family":"firefox",
-      "regex":"(firefox)/([0-9]+)\\.([0-9]+)\\.([0-9]+)"
+      "regex":"rv:([0-9\\.]+)\\) (gecko/[0-9]+) (firefox)/([0-9\\.]+)"
+    },{
+      "family":"yabrowser",
+      "regex":"(yabrowser)/([0-9\\.]+) (safari/[0-9\\.]+)"
+    },{
+      "family":"opera",
+      "regex":"(opr)/([0-9]+)\\.([0-9\\.])"
+    },{
+      "family":"ie",
+      "regex":"compatible; (msie) ([0-9\\.]+); (windows)"
+    },{
+      "family":"ie",
+      "regex":"trident.* rv:([0-9\\.]+)\\) (like gecko)",
+      "description": "ie 11"
+    },{
+      "family":"edge",
+      "regex":"(safari)/([0-9\\.]+) edge/([0-9]+)\\.([0-9]+)",
+      "description": "ie 11"
+    },{
+      "family":"chrome",
+      "regex":"(chromium|chrome)/([0-9\\.]+) (safari/[0-9\\.]+)"
     }
   ],
   "os":[],

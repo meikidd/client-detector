@@ -1,7 +1,5 @@
 package com.alibaba.detector;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class DetectorObject {
